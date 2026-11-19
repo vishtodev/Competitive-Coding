@@ -12,6 +12,7 @@
 6. Traverse the tree: append `0` for a left edge and `1` for a right edge. A leaf's path is that character's Huffman code.
 
 ## Example
+
 Input frequencies:
 
 | Character | Frequency |
@@ -21,14 +22,36 @@ Input frequencies:
 | C | 6 |
 | D | 3 |
 
-For the insertion and tie behavior in this implementation, the resulting codes are:
+### Tree construction
 
-| Character | Code |
-|---|---|
-| C | `0` |
-| B | `100` |
-| D | `101` |
-| A | `11` |
+The program repeatedly combines the two nodes with the smallest frequencies:
+
+1. `B(1) + D(3) = 4`
+2. `4 + A(5) = 9`
+3. `C(6) + 9 = 15` — the final root
+
+### Final Huffman tree
+
+A left edge adds `0`; a right edge adds `1`.
+
+```mermaid
+flowchart TD
+    R["15"] -->|0| C["C : 6"]
+    R -->|1| N9["9"]
+    N9 -->|0| N4["4"]
+    N9 -->|1| A["A : 5"]
+    N4 -->|0| B["B : 1"]
+    N4 -->|1| D["D : 3"]
+```
+
+Read the bits along the path from the root to each character (leaf):
+
+| Character | Path | Huffman code |
+|---|---|---|
+| C | Left | `0` |
+| B | Right → Left → Left | `100` |
+| D | Right → Left → Right | `101` |
+| A | Right → Right | `11` |
 
 > Huffman codes are variable-length and prefix-free. Different tie choices can produce different, but equally optimal, codes when frequencies are tied.
 
