@@ -1,18 +1,5 @@
 import java.util.*;
 
-class HuffmanNode {
-    int item;
-    char c;
-    HuffmanNode left;
-    HuffmanNode right;
-}
-
-class ImplementComparator implements Comparator<HuffmanNode> {
-    public int compare(HuffmanNode x, HuffmanNode y) {
-        return x.item - y.item;
-    }
-}
-
 public class HuffmanCoding {
 
     public static void printCode(HuffmanNode root, String s) {
@@ -71,5 +58,18 @@ public class HuffmanCoding {
         System.out.println(" Char | Huffman code");
         System.out.println("-------------------");
         printCode(root, "");
+    }
+}
+
+class HuffmanNode {
+    int item;
+    char c;
+    HuffmanNode left;
+    HuffmanNode right;
+}
+
+class ImplementComparator implements Comparator<HuffmanNode> {
+    public int compare(HuffmanNode x, HuffmanNode y) {
+        return x.item - y.item;
     }
 }
