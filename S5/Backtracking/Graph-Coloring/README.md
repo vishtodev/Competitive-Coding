@@ -105,11 +105,8 @@ if (graphColoringUtil(graph, m, color, v + 1))
 color[v] = 0; // backtrack
 ```
 
-## Time and Space Complexity
+## Time Complexity
+`O(V × m^V)` for fixed `m`; `O(V × V^V)` for the PPT main method.
 
-Let `V` be the number of vertices and `m` the number of available colors.
-
-- **Time for one fixed-`m` attempt:** `O(V × m^V)` worst case. Each vertex can try up to `m` colors, and `isSafe()` scans up to `V` vertices.
-- **Time for this PPT program:** `O(V × V^V)` worst case, because `main()` may call the solver for `m = 1` through `V`. The outer loop stops at the first successful attempt.
-- **Auxiliary space:** `O(V)` for the color array and recursion stack.
-- **Graph storage:** `O(V²)` for the adjacency matrix.
+## Space Complexity
+`O(V)` auxiliary; `O(V²)` including the adjacency matrix.
