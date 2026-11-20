@@ -9,7 +9,7 @@ Find all prime numbers from 2 up to N.
 ## Logic
 1. Create a boolean array of size `n + 1` and initially mark every position as true.
 2. Mark positions 0 and 1 as false because they are not prime.
-3. For each number from 2 through `sqrt(n)), check whether it is still marked prime.
+3. For each number from 2 through `sqrt(n)`, check whether it is still marked prime.
 4. If it is prime, mark all its multiples starting from `i * i` as false.
 5. Print all positions that remain true.
 
