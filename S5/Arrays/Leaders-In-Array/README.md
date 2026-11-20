@@ -20,4 +20,4 @@ Output: `[17, 5, 2]`
 `O(n)`
 
 ## Space Complexity
-`O(k)` for storing the leaders
+`O(k)`
