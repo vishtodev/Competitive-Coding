@@ -73,11 +73,8 @@ Compressed message + code table
 = 97 bits
 ```
 
-## Time and Space Complexity
+## Time Complexity
+`O(n log n)`
 
-Let `n` be the number of distinct characters.
-
-- **Tree construction:** `O(n log n)` — priority-queue insertions and removals take `O(log n)`; there are `n` initial insertions and `n - 1` merge steps.
-- **Tree traversal:** `O(n)` nodes are visited to print the codes.
-- **Space:** `O(n)` for the priority queue, Huffman tree, and recursion stack.
-- **Implementation note:** This PPT code builds a new String with `s + "0"` / `s + "1"` at each recursive step. Copying path strings can add up to `O(n²)` work in a highly skewed tree. The standard `O(n log n)` algorithmic bound treats path extension as constant time (for example, with a mutable `StringBuilder`).
+## Space Complexity
+`O(n)`
