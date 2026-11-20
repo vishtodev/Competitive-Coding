@@ -72,3 +72,10 @@ Compressed message + code table
 = 45 + 52
 = 97 bits
 ```
+
+## Time and Space Complexity
+
+Let `n` be the number of distinct characters.
+
+- **Time:** `O(n log n)` to build the Huffman tree. Each insertion/removal in the min-priority queue takes `O(log n)`; there are `n` initial insertions and `n - 1` merge steps. Printing the codes traverses the tree in `O(n)`.
+- **Space:** `O(n)` for the priority queue, Huffman tree, and recursive traversal stack.
