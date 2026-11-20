@@ -1,4 +1,4 @@
-# Maximum Consecutive Ones III
+# Longest Subarray After Flipping at Most K Zeros
 
 **Topic:** Arrays  
 **Approach:** Sliding Window
