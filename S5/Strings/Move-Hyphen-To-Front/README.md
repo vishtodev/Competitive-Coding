@@ -9,7 +9,7 @@ Move all hyphens in a character array to the beginning while preserving the rela
 ## Logic
 1. Start two indices at the last position.
 2. Traverse the array from right to left using `j`.
-3. Copy each non-hyphen character to position `i), then decrement `i`.
+3. Copy each non-hyphen character to position `i`, then decrement `i`.
 4. Fill all remaining positions at the beginning with hyphens.
 
 ## Example
