@@ -92,13 +92,6 @@ flowchart TD
 - `graphColoring(m)`: Checks whether the graph can be colored using at most `m` colors.
 - `main()`: In this PPT version, tries `m = 1, 2, ...` and stops at the first successful coloring (minimum number of colors).
 
-## Complexity
-
-For one attempt with a fixed `m`:
-- **Time:** `O(V × m^V)` worst case (`m` choices per vertex; `isSafe()` scans up to `V` vertices).
-- **Auxiliary space:** `O(V)` for the color array and recursion stack.
-- **Graph storage:** `O(V²)` for the adjacency matrix.
-
 ## Interview reminder
 
 **Choose → Check → Recurse → Undo if it fails.**
@@ -111,3 +104,12 @@ if (graphColoringUtil(graph, m, color, v + 1))
     return true;
 color[v] = 0; // backtrack
 ```
+
+## Time and Space Complexity
+
+Let `V` be the number of vertices and `m` the number of available colors.
+
+- **Time for one fixed-`m` attempt:** `O(V × m^V)` worst case. Each vertex can try up to `m` colors, and `isSafe()` scans up to `V` vertices.
+- **Time for this PPT program:** `O(V × V^V)` worst case, because `main()` may call the solver for `m = 1` through `V`. The outer loop stops at the first successful attempt.
+- **Auxiliary space:** `O(V)` for the color array and recursion stack.
+- **Graph storage:** `O(V²)` for the adjacency matrix.
