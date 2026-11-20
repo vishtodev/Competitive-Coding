@@ -1,24 +1,33 @@
 # Natural Sort Order
 
-**Topic:** Sorting  
-**Approach:** Regex-based Comparator
+**Topic:** Sorting
 
-## Problem
-Sort strings containing text and numbers in natural order. For example, `file2.txt` should come before `file10.txt`.
+## 1. Simple Natural Sort
 
-## Logic
-1. The regex `(\\D*)(\\d*)` separates each match into a non-digit group and a digit group.
-2. Compare the text groups using `compareTo()`.
-3. Convert the digit groups to integers and compare their numeric values.
-4. Continue through the matches; use a final string comparison when all matched parts are equal.
+File: NaturalSortSimple.java
 
-## Key methods
-- `compare()`: Defines the natural ordering between two strings.
-- `Matcher.find()`: Retrieves successive text-and-number groups.
-- `Collections.sort()`: Sorts the list using `NaturalOrderComparator`.
+Use this shorter version when each filename contains only one numeric section, such as file01.txt, file02.txt, and file10.txt.
+
+The key code is:
+
+    Arrays.sort(files, Comparator.comparingInt(
+            s -> Integer.parseInt(s.replaceAll("\\D", ""))
+    ));
+
+- replaceAll("\\D", "") removes non-digit characters.
+- Integer.parseInt() converts the remaining number into an integer.
+- Comparator.comparingInt() sorts filenames by that number.
+
+**Limitation:** This combines all digits in a filename, so it is not suitable for filenames with multiple independent number sections, such as file2part10.
+
+## 2. General Natural Sort
+
+File: NaturalSortExample.java
+
+Use the Regex-based Comparator when filenames contain multiple text and number sections. It compares each text and numeric part in sequence.
 
 ## Time Complexity
-`O(n log n × L)`
+O(n log n × L)
 
 ## Space Complexity
-`O(n)`
+O(n)
